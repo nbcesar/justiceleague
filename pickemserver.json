@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pickem-football",
+  "private_key_id": "46ab109be4073b058a27da923e57902f63476ac0",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4aASpmOoajgJN\nlK3aSFM42in08G/Zgpw/OTXTRwPPpUkCi2FOkTXK2K7XxibsrE/kAZbxXMES8vL6\nzQy1YWesX+IXl0USCztkBvMBl84D7CnKFWW5Q907XGVKRTVGQ0Oty9NcSqmm/Y0+\n6chRtN3+x1zTZACSr5wjxRG99JDFZ8A9fqyCEo1OKZrM8wkvjZNYNSYYLF+gaDx2\nT186AQDzF72W8lrJiuzKxFIQ+SjuiZKTu+uvRzDgts2hZPBBWJHYgodIlKx0TRoh\n46y8L1nvlD+3p+zw3ShjqNneDIo3dlYXdW6ixq8Sm3A3RFEA9ig47CgwG6TG147O\nPG8VcsKfAgMBAAECggEAIsRZvK/70y3a+U2CyZjBOALJzkhWjie11aWvpDnLWibL\ncRNeMTXncmsP69aMGCsUlORH1RGrxSrQ7MAkGT5YEYOyWMhIWXKMq/szbaV1TgAE\nkPkfyKIm3743ypzpwmmEJQw8uTXKbpV3P9lLzzvObu6fbat5AC7jvUq2YZ3ufYkU\nI6EgRV+GOKRqhtALPLUk4JVvCPAMqPXNkAYW4ttghMo2o9zjMaqhZurGMKGqOcP/\nf9FF8Lhtr8/XYNGkSvdQjIM9M1wRNNllC9/hXfimDjWdCHqBtNWyvrt5kATQsbzy\n5eVKkF7ZnspZqjXEedK5ugKF8y1++ggD88Tpul5agQKBgQDaGFeQhF85ORye2kyA\n8Qk4l3N3EzN6u1gfYhfdc5+q4Oe/lPQA1FjsmtE3v9i1x6ylP/rMvqIKp1s+IJdD\nnZZTDJQET/aN5P9vj/x2JlhoiRLFAEw+dNrIbsvqNVxYBex8pjIggBOr/YGqgAMv\n3ftxbW/KuwQW1wFPVL7J5C9gzwKBgQDYdMTnpTHNvSYcyD+PMKtF1S3CnJGul0aC\nkAnyy+LMqUtaSYYz3YnIy4B20UELEq2pihqsCMui3NZ7BPerN90wi7VK5N4BCZKU\nKt7maDd90Ff5jdjxYMF+HS1Ri2Jcp8RDTCGQ0LT1tKKWzBFWhDU7oLefDxWvwnFD\n9EsPiRvVMQKBgHSxdZjT2weJMXElqK2NSrvG/XcHBRJ0T1Brcg2BojsSH634ix4u\ngG4I4E0OD2wkLJI2y4Dlt1ov9bgmRAlftmE1Z7Vu+6MslighSJoHJmK4hRx3blQ0\nviNkdSMZ7hEDCmgfnM6a+Oubttd9qzbfdXxZa+lza1q1K/RAid0IhPktAoGBAKP2\nF61MgeRRkgwdV5/0gthb+dS/2s6AgoWl7BNBg+P5nT2gEgs5lgRGumHGclmb5XZW\nSYvlAbO1SrZW9fB5WZBLU6GOqefpQ2H+82derCIebnV3kEyPOSJ5oXlydqiu4EkF\n4ysaHOk90iceH0gEz3oCbPUMbSX8yOVrqGv1NOMRAoGBAKLU+ERkG71Y7J50w904\nR9CbDYmuzzek0ubJrzyIw36jPY6QX5MUldcuMLQVeovUvYFz99zfoUOV+h88U+Qz\nbqKPc2RB7j9HdkVvHxEjM+xOIx95rQijexNVsSu3i7E0yV6+KZhuT1zzIBMT+gIW\nxUa1EmP08fkfDfuPm+geBcOI\n-----END PRIVATE KEY-----\n",
+  "client_email": "groupmebot@pickem-football.iam.gserviceaccount.com",
+  "client_id": "107856924044923897923",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/groupmebot%40pickem-football.iam.gserviceaccount.com"
+}

@@ -42,9 +42,9 @@ app.get('/scrape', function(req, res) {
 
 
 // Scrape ESPN league every 30 minutes
-var minutes = 1, the_interval = minutes * 60 * 1000;
+var minutes = 30, the_interval = minutes * 60 * 1000;
 setInterval(function() {
-  console.log("I am doing my 2 minutes check");
+  //console.log("I am doing my 30 minutes check");
   // Scrape here
   url = 'http://games.espn.com/ffl/leagueoffice?leagueId=560005&seasonId=2016';
   

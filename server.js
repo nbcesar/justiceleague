@@ -106,7 +106,7 @@ setInterval(function() {
   });
 }, the_interval);
 
-
+/*
 // Iron Monkey
 // Scrape ESPN league every 30 minutes
 var minutes = 30, the_interval = minutes * 60 * 1000;
@@ -174,7 +174,7 @@ setInterval(function() {
     }
   });
 }, the_interval);
-
+*/
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {

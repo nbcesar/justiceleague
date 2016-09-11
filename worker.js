@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 console.log('trying');
 
 // init project

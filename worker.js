@@ -1,6 +1,4 @@
-#! /bin/node
-
-// server.js
+console.log('trying');
 
 // init project
 var fs = require('fs');

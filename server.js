@@ -9,6 +9,7 @@ var cheerio = require('cheerio');
 var app = express();
 var firebase = require("firebase");
 var HTTPS = require('https');
+var bodyParser = require('body-parser');
 
 var botID = 'e7d871c51ec5ef498afd823d88';
 var monkeyBot = '68e5a5a031b76f572c1ca90224';
@@ -21,6 +22,9 @@ firebase.initializeApp({
 var db = firebase.database();
 var ref = db.ref("/justiceleague");
 var monkeyRef = db.ref("/ironmonkey");
+
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -35,7 +39,7 @@ app.get("/", function (request, response) {
 
 app.post('/', function(req, res) {
   console.log('testing');
-  console.log(req);
+  console.log(req.body);
 });
 
 

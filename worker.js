@@ -12,7 +12,7 @@ var HTTPS = require('https');
 var app = express();
 
 app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 var botID = 'e7d871c51ec5ef498afd823d88';

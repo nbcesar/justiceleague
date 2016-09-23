@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-console.log('trying');
 
 // init project
 var express = require('express');
@@ -25,7 +24,7 @@ var ref = db.ref("/justiceleague");
 
 app.post('/', function(req, res) {
   console.log('testing');
-  console.log(req.body);
+  console.log(req.params);
 });
 
 url = 'http://games.espn.com/ffl/leagueoffice?leagueId=560005&seasonId=2016';

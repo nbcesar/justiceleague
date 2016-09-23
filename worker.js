@@ -25,7 +25,7 @@ var ref = db.ref("/justiceleague");
 app.post('/', function(req, res) {
   console.log('testing');
   var request = JSON.parse(req.chunks[0]),
-  console.log(requst.text);
+  console.log(request.text);
 });
 
 url = 'http://games.espn.com/ffl/leagueoffice?leagueId=560005&seasonId=2016';

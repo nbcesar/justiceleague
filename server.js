@@ -38,8 +38,10 @@ app.get("/", function (request, response) {
 });
 
 app.post('/', function(req, res) {
-  console.log('testing');
-  console.log(req.body.message);
+  if (req.body.text == '/scores') {
+    console.log(req.body.text);  
+  }
+  
 });
 
 

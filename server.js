@@ -38,6 +38,7 @@ app.get("/", function (request, response) {
 });
 
 app.post('/', function(req, res) {
+  console.log(req.body);
   if (req.body.text == '/scores') {
     console.log(req.body.text);  
   }

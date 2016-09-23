@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 // init project
+var bodyParser = require('body-parser');
 var express = require('express');
 var fs = require('fs');
 var request = require('request');
@@ -9,6 +10,10 @@ var firebase = require("firebase");
 var HTTPS = require('https');
 
 var app = express();
+
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 var botID = 'e7d871c51ec5ef498afd823d88';
 
@@ -24,8 +29,7 @@ var ref = db.ref("/justiceleague");
 
 app.post('/', function(req, res) {
   console.log('testing');
-  var request = JSON.parse(req.chunks[0]);
-  console.log(request.text);
+  console.log(req.body.message);
 });
 
 url = 'http://games.espn.com/ffl/leagueoffice?leagueId=560005&seasonId=2016';

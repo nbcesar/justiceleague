@@ -38,10 +38,41 @@ app.get("/", function (request, response) {
 });
 
 app.post('/', function(req, res) {
-  console.log(req.body);
-  if (req.body.text == '/scores') {
-    console.log(req.body.text);  
+  if (req.body.text == '/scores') {    
+    if (req.body.name === 'weTalkingAuction') {
+      botResponse = "I am sorry master...I haven't exactly figured out how to get the scores but I am working on it...All hail Santo Dominates.";  
+    }
+    else {
+      botResponse = "FU " + req.body.name + ". I take orders from no one.";
+    }
+    var botResponse, options, body, botReq;    
+    options = {
+      hostname: 'api.groupme.com',
+      path: '/v3/bots/post',
+      method: 'POST'
+    };
+    body = {
+      "bot_id" : botID,
+      "text" : botResponse
+    };
+    //console.log('sending ' + botResponse + ' to ' + botID);
+    botReq = HTTPS.request(options, function(res) {
+        if(res.statusCode == 202) {
+          //neat
+          console.log('sent');
+        } else {
+          console.log('rejecting bad status code ' + res.statusCode);
+        }
+    });
+    botReq.on('error', function(err) {
+      console.log('error posting message '  + JSON.stringify(err));
+    });
+    botReq.on('timeout', function(err) {
+      console.log('timeout posting message '  + JSON.stringify(err));
+    });
+    botReq.end(JSON.stringify(body));
   }
+  
   
 });
 
@@ -114,75 +145,6 @@ setInterval(function() {
   });
 }, the_interval);
 
-/*
-// Iron Monkey
-// Scrape ESPN league every 30 minutes
-var minutes = 30, the_interval = minutes * 60 * 1000;
-setInterval(function() {
-  // Scrape here
-  url = 'http://games.espn.com/ffl/leagueoffice?leagueId=181698&seasonId=2016';
-  
-  request(url, function(error, response, html) {
-    
-    if(!error) {
-      
-      var $ = cheerio.load(html);
-  
-      $('.lo-recent-activity-item').each(function(i, el) {
-  
-        var itemTime = $(this).children().children('.recent-activity-when').text();
-        var itemDesc = $(this).children().children('.recent-activity-description').text();
-        
-        monkeyRef.child(itemTime).once('value', function(data) {
-          if (data.val() === null) {
-            monkeyRef.child(itemTime).set(itemDesc);
-            
-            // send message
-            
-            var botResponse, options, body, botReq;
-
-            botResponse = itemDesc;
-          
-            options = {
-              hostname: 'api.groupme.com',
-              path: '/v3/bots/post',
-              method: 'POST'
-            };
-          
-            body = {
-              "bot_id" : monkeyBot,
-              "text" : botResponse
-            };
-          
-            //console.log('sending ' + botResponse + ' to ' + botID);
-          
-            botReq = HTTPS.request(options, function(res) {
-                if(res.statusCode == 202) {
-                  //neat
-                  console.log('sent');
-                } else {
-                  console.log('rejecting bad status code ' + res.statusCode);
-                }
-            });
-          
-            botReq.on('error', function(err) {
-              console.log('error posting message '  + JSON.stringify(err));
-            });
-            botReq.on('timeout', function(err) {
-              console.log('timeout posting message '  + JSON.stringify(err));
-            });
-            botReq.end(JSON.stringify(body));
-          }
-        });
-        
-      });
-    }
-    else {
-      console.log(error);
-    }
-  });
-}, the_interval);
-*/
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {

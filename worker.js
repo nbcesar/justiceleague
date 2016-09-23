@@ -24,7 +24,7 @@ var ref = db.ref("/justiceleague");
 
 app.post('/', function(req, res) {
   console.log('testing');
-  var request = JSON.parse(req.chunks[0]),
+  var request = JSON.parse(req.chunks[0]);
   console.log(request.text);
 });
 

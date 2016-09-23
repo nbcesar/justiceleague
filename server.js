@@ -33,7 +33,7 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.post('/message', function(req, res) {
+app.post('/', function(req, res) {
   console.log('testing');
   console.log(req.body);
 });

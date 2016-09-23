@@ -33,8 +33,9 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/scrape', function(req, res) {
-  
+app.post('/message', function(req, res) {
+  console.log('testing');
+  console.log(req.body);
 });
 
 

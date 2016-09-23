@@ -2,11 +2,14 @@
 console.log('trying');
 
 // init project
+var express = require('express');
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
 var firebase = require("firebase");
 var HTTPS = require('https');
+
+var app = express();
 
 var botID = 'e7d871c51ec5ef498afd823d88';
 
@@ -18,9 +21,12 @@ firebase.initializeApp({
 var db = firebase.database();
 var ref = db.ref("/justiceleague");
 
+//console.log("I am doing my 10 minutes check");
 
-
-console.log("I am doing my 30 minutes check");
+app.post('/', function(req, res) {
+  console.log('testing');
+  console.log(req.body);
+});
 
 url = 'http://games.espn.com/ffl/leagueoffice?leagueId=560005&seasonId=2016';
 
@@ -82,4 +88,8 @@ request(url, function(error, response, html) {
   else {
     console.log(error);
   }
+});
+
+var listener = app.listen(process.env.PORT, function () {
+  console.log('Your app is listening on port ' + listener.address().port);
 });

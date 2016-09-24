@@ -166,7 +166,7 @@ function getScores() {
     $('.ptsBased').each(function(i, el) {      
       var name1 = $(this).children().eq(0).children().children('.name').children().eq(0).text();
       
-      var record1 = $(this).children().eq(0).children().children('.record').text();
+      var record1 = $(this).children().eq(0).children().children().eq(1).children('.record').text();
       
       var score1 = $(this).children().eq(0).children('.score').text();
       
@@ -174,7 +174,7 @@ function getScores() {
       
       var name2 = $(this).children().eq(1).children().children('.name').children().eq(0).text();
       
-      var record2 = $(this).children().eq(1).children().children('.record').text();
+      var record2 = $(this).children().eq(1).children().children().eq(1).children('.record').text();
       
       var score2 = $(this).children().eq(1).children('.score').text();
       
@@ -182,7 +182,7 @@ function getScores() {
       
       botMessage += name1 + " "+ record1 +": " + score1 + " ("+proj1+") \r\n vs \r\n" + name2 + " " + record2 +": " + score2 + " ("+proj2+")";
       
-      botMessage += "\n\n";
+      botMessage += "\n---------------\n";
       
     });
     

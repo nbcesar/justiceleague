@@ -182,8 +182,9 @@ function getScores() {
       
     });
     
+  console.log(botMessage);
   });
   
-  console.log(botMessage);
+  
   
 }

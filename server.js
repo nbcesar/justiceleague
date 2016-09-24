@@ -158,6 +158,8 @@ var listener = app.listen(process.env.PORT, function () {
 function getScores() {
   url = "http://games.espn.com/ffl/scoreboard?leagueId=560005&seasonId=2016";
   
+  var botMessage;
+  
   request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     
@@ -174,10 +176,14 @@ function getScores() {
       
       var score2 = $(this).children().eq(1).children('.score').text();
       
-      console.log(name1 + " " + record1 + ": " + score1 + "\r\n vs \r\n" + name2 + " " + record2 + ": " + score2);
+      botMessage += name1 + " " + record1 + ": " + score1 + "\r\n vs \r\n" + name2 + " " + record2 + ": " + score2;
+      
+      botMessage += "\n\n";
       
     });
     
   });
+  
+  console.log(botMessage);
   
 }

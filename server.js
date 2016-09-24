@@ -161,10 +161,10 @@ function getScores() {
   request(url, function(error, response, html) {
     var $ = cheerio.load(html);
     
-    $('.ptsBased').each(function(i, el) {
-      var name1 = $(this).children().children().children('.name').text();
-      var score1 = $(this).children().children('.score').text();
-      console.log(name1,score1);
+    $('.ptsBased').each(function(i, el) {      
+      var team1 = $(this).children().eq(0).text();
+      
+      console.log(team1);
     });
     
   });

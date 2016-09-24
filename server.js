@@ -14,6 +14,8 @@ var bodyParser = require('body-parser');
 var botID = 'e7d871c51ec5ef498afd823d88';
 var monkeyBot = '68e5a5a031b76f572c1ca90224';
 
+getScores();
+
 firebase.initializeApp({
   serviceAccount: "pickemserver.json",
   databaseURL: "https://pickem-football.firebaseio.com"
@@ -34,18 +36,20 @@ app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
+  //response.sendFile(__dirname + '/views/index.html');
 });
 
 app.post('/', function(req, res) {
   if (req.body.text == '/scores') {    
+    //var botResponse;
+    //botResponse = getScores();
     if (req.body.name === 'weTalkinAuction') {
       botResponse = "I am sorry master...I haven't exactly figured out how to get the scores but I am working on it...All hail Santo Dominates.";  
     }
     else {
       botResponse = "FU " + req.body.name + ". I take orders from no one.";
     }
-    var botResponse, options, body, botReq;    
+    var options, body, botReq;    
     options = {
       hostname: 'api.groupme.com',
       path: '/v3/bots/post',
@@ -150,3 +154,18 @@ setInterval(function() {
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
+
+function getScores() {
+  url = "http://games.espn.com/ffl/scoreboard?leagueId=560005&seasonId=2016";
+  
+  request(url, function(error, response, html) {
+    var $ = cheerio.load(html);
+    
+    $('.ptsBased').each(function(i, el) {
+      var name1 = $(this).children().children().text();
+      console.log(name1);
+    });
+    
+  }
+  
+}

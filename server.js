@@ -42,13 +42,8 @@ app.get("/", function (request, response) {
 app.post('/', function(req, res) {
   if (req.body.text == '/scores') {    
     //var botResponse;
-    //botResponse = getScores();
-    if (req.body.name === 'weTalkinAuction') {
-      botResponse = "I am sorry master...I haven't exactly figured out how to get the scores but I am working on it...All hail Santo Dominates.";  
-    }
-    else {
-      botResponse = "FU " + req.body.name + ". I take orders from no one.";
-    }
+    botResponse = getScores();
+    
     var options, body, botReq;    
     options = {
       hostname: 'api.groupme.com',
@@ -186,7 +181,7 @@ function getScores() {
       
     });
     
-  console.log(botMessage);
+    return botMessage;
   });
   
   

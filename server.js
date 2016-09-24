@@ -162,7 +162,7 @@ function getScores() {
     var $ = cheerio.load(html);
     
     $('.ptsBased').each(function(i, el) {
-      var name1 = $(this).children().children().text();
+      var name1 = $(this).children().children().children().text();
       console.log(name1);
     });
     

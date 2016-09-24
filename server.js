@@ -162,9 +162,22 @@ function getScores() {
     var $ = cheerio.load(html);
     
     $('.ptsBased').each(function(i, el) {      
-      var team1 = $(this).children().eq(0).text();
+      var name1 = $(this).children().eq(0).children().children('.name').children().text();
       
-      console.log(team1);
+      var record1 = $(this).children().eq(0).children().children('.record').children().text();
+      
+      var score1 = $(this).children().eq(0).children('.score').text();
+      
+      console.log(name1 + " " + record1 + ": " + score1);
+      
+      var name2 = $(this).children().eq(1).children().children('.name').children().text();
+      
+      var record2 = $(this).children().eq(1).children().children('.record').children().text();
+      
+      var score2 = $(this).children().eq(1).children('.score').text();
+      
+      console.log(name2 + " " + record2 + ": " + score2);
+      
     });
     
   });

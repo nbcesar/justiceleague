@@ -166,6 +166,6 @@ function getScores() {
       console.log(name1);
     });
     
-  }
+  });
   
 }

@@ -62,7 +62,7 @@ app.post('/', function(req, res) {
           var team = $(this).children().eq(0).text();
           var wins = $(this).children().eq(1).text();
           var losses = $(this).children().eq(2).text();
-          botResponse += "("+i+") "+team + " ("+wins +"-"+ losses+") \n";
+          botResponse += i+"-"+team + " ("+wins +"-"+ losses+") \n";
         }
         
       });

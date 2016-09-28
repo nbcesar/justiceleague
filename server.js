@@ -34,13 +34,73 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
+/*
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) {
   //response.sendFile(__dirname + '/views/index.html');
 });
+*/
 
 app.post('/', function(req, res) {
-  if (req.body.text == '/scores') {    
+  
+  
+  if (req.body.text == '/standings') {
+    // Get standings
+    url = "http://games.espn.com/ffl/standings?leagueId=560005&seasonId=2016";
+    var botResponse = "";
+
+    request(url, function(error, response, html) {
+      var $ = cheerio.load(html);
+      $('.tableBody').each(function(i, el) {      
+        if (i == 0) {
+          botResponse += $(this).children().eq(0).text();
+          botReponse += "\n";
+          botResponse += "---------------";
+        }
+        else if (i == 13) {
+          
+        }
+        else {
+          var team = $(this).children().eq(0).text();
+          var wins = $(this).children().eq(1).text();
+          var losses = $(this).children().eq(2).text();
+          botResponse += team + " ("+wins +"-"+ losses+") \n";
+        }
+        
+      });
+
+      var options, body, botReq;    
+      options = {
+        hostname: 'api.groupme.com',
+        path: '/v3/bots/post',
+        method: 'POST'
+      };
+      body = {
+        "bot_id" : botID,
+        "text" : botResponse
+      };
+
+      botReq = HTTPS.request(options, function(res) {
+        if(res.statusCode == 202) {
+          //neat
+          console.log('sent');
+        } else {
+          console.log('rejecting bad status code ' + res.statusCode);
+        }
+      });
+      botReq.on('error', function(err) {
+        console.log('error posting message '  + JSON.stringify(err));
+      });
+      botReq.on('timeout', function(err) {
+        console.log('timeout posting message '  + JSON.stringify(err));
+      });
+      botReq.end(JSON.stringify(body));
+    });
+    
+  }
+  
+  
+  if (req.body.text == '/scores') {
     // Get scores
     url = "http://games.espn.com/ffl/scoreboard?leagueId=560005&seasonId=2016";
     var botResponse = "";
@@ -71,7 +131,7 @@ app.post('/', function(req, res) {
         "bot_id" : botID,
         "text" : botResponse
       };
-      //console.log('sending ' + botResponse + ' to ' + botID);
+
       botReq = HTTPS.request(options, function(res) {
           if(res.statusCode == 202) {
             //neat
@@ -88,9 +148,9 @@ app.post('/', function(req, res) {
       });
       botReq.end(JSON.stringify(body));
     });
-  };
+  }
   
-});
+}); // Closing post.('/');
 
 
 // Scrape ESPN league every 30 minutes
@@ -164,43 +224,5 @@ setInterval(function() {
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
+  //console.log('Your app is listening on port ' + listener.address().port);
 });
-
-function getScores() {
-  url = "http://games.espn.com/ffl/scoreboard?leagueId=560005&seasonId=2016";
-  
-  var botMessage = "";
-  
-  request(url, function(error, response, html) {
-    var $ = cheerio.load(html);
-    
-    $('.ptsBased').each(function(i, el) {      
-      var name1 = $(this).children().eq(0).children().children('.name').children().eq(0).text();
-      
-      var record1 = $(this).children().eq(0).children().children().eq(1).children('.record').text();
-      
-      var score1 = $(this).children().eq(0).children('.score').text();
-      
-      var proj1 = $(this).children().eq(2).children().children('.scoringDetails').children().eq(2).children().eq(3).text();
-      
-      var name2 = $(this).children().eq(1).children().children('.name').children().eq(0).text();
-      
-      var record2 = $(this).children().eq(1).children().children().eq(1).children('.record').text();
-      
-      var score2 = $(this).children().eq(1).children('.score').text();
-      
-      var proj2 = $(this).children().eq(2).children().children('.scoringDetails').children().eq(5).children().eq(3).text();
-      
-      botMessage += name1 + " "+ record1 +": " + score1 + " ("+proj1+") \r\n vs \r\n" + name2 + " " + record2 +": " + score2 + " ("+proj2+")";
-      
-      botMessage += "\n---------------\n";
-      
-    });
-    
-    return botMessage;
-  });
-  
-  
-  
-}

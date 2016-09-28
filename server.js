@@ -52,7 +52,7 @@ app.post('/', function(req, res) {
       $('.tableBody').each(function(i, el) {      
         if (i == 0) {
           botResponse += $(this).children().eq(0).text();
-          botReponse += "\n";
+          botResponse += "\n";
           botResponse += "---------------";
         }
         else if (i == 13) {

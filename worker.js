@@ -25,12 +25,6 @@ firebase.initializeApp({
 var db = firebase.database();
 var ref = db.ref("/justiceleague");
 
-//console.log("I am doing my 10 minutes check");
-
-app.post('/', function(req, res) {
-  console.log('testing');
-  console.log(req.body.message);
-});
 
 url = 'http://games.espn.com/ffl/leagueoffice?leagueId=560005&seasonId=2016';
 

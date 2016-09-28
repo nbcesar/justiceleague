@@ -14,8 +14,6 @@ var bodyParser = require('body-parser');
 var botID = 'e7d871c51ec5ef498afd823d88';
 var monkeyBot = '68e5a5a031b76f572c1ca90224';
 
-getScores();
-
 firebase.initializeApp({
   serviceAccount: "pickemserver.json",
   databaseURL: "https://pickem-football.firebaseio.com"
